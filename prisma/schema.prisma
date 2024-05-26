@@ -1,0 +1,24 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Temp {
+  userId    Int      @id @default(autoincrement()) @map("userId")
+  email     String   @unique @map("email")
+  password  String   @map("password")
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+
+  UserInfos UserInfos?  // 사용자(Users) 테이블과 사용자 정보(UserInfos) 테이블이 1:1 관계
+  Posts    Posts[]    // 사용자(Users) 테이블과 게시글(Posts) 테이블이 1:N 관계
+  Comments Comments[] // 사용자(Users) 테이블과 댓글(Comments) 테이블이 1:N 관계
+  UserHistories UserHistories[]  // 사용자(Users) 테이블과 사용자 히스토리(UserHistories) 테이블이 1:N 관계
+
+  @@map("Temp")
+}

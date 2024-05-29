@@ -23,23 +23,15 @@
 
 <br/>
 
-## 선택 구현과제
 
-**1. ㅂㄷㅈㄱ**
-
-<br/>
-
-**2. ㅁㄴㅇㄹ**
-
-<br/>
-
-**3. ㅋㅌㅊㅍ**
-
-<br/>
 
 ### API 구현 목록
-- ㅇㅁㄴㅇ
-- ㅁㄴㅇ
-- ㄴㅇ
-- ㄹ
+- /api/users  [POST] : 사용자 회원가입
+- /api/log-in [POST] : 사용자 로그인
+- /api/users  [GET]  : 사용자 전체조회
+- /api/user   [GET]  : 사용자 지정조회
+- /api/users  [DELETE] : 사용자 삭제
+
+- /api/characters [POST] : 캐릭터 생성
+- /api/characters [GET]  : 캐릭터 조회
 

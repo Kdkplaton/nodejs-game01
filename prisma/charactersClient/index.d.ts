@@ -3008,7 +3008,7 @@ export namespace Prisma {
     UserId: number | null
     name: string | null
     health: string | null
-    strength: string | null
+    power: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3018,7 +3018,7 @@ export namespace Prisma {
     UserId: number | null
     name: string | null
     health: string | null
-    strength: string | null
+    power: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3028,7 +3028,7 @@ export namespace Prisma {
     UserId: number
     name: number
     health: number
-    strength: number
+    power: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3050,7 +3050,7 @@ export namespace Prisma {
     UserId?: true
     name?: true
     health?: true
-    strength?: true
+    power?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3060,7 +3060,7 @@ export namespace Prisma {
     UserId?: true
     name?: true
     health?: true
-    strength?: true
+    power?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3070,7 +3070,7 @@ export namespace Prisma {
     UserId?: true
     name?: true
     health?: true
-    strength?: true
+    power?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3167,7 +3167,7 @@ export namespace Prisma {
     UserId: number
     name: string
     health: string
-    strength: string
+    power: string
     createdAt: Date
     updatedAt: Date
     _count: CharactersCountAggregateOutputType | null
@@ -3196,7 +3196,7 @@ export namespace Prisma {
     UserId?: boolean
     name?: boolean
     health?: boolean
-    strength?: boolean
+    power?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
@@ -3207,7 +3207,7 @@ export namespace Prisma {
     UserId?: boolean
     name?: boolean
     health?: boolean
-    strength?: boolean
+    power?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -3228,7 +3228,7 @@ export namespace Prisma {
       UserId: number
       name: string
       health: string
-      strength: string
+      power: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["characters"]>
@@ -3630,7 +3630,7 @@ export namespace Prisma {
     readonly UserId: FieldRef<"Characters", 'Int'>
     readonly name: FieldRef<"Characters", 'String'>
     readonly health: FieldRef<"Characters", 'String'>
-    readonly strength: FieldRef<"Characters", 'String'>
+    readonly power: FieldRef<"Characters", 'String'>
     readonly createdAt: FieldRef<"Characters", 'DateTime'>
     readonly updatedAt: FieldRef<"Characters", 'DateTime'>
   }
@@ -3986,7 +3986,7 @@ export namespace Prisma {
     UserId: 'UserId',
     name: 'name',
     health: 'health',
-    strength: 'strength',
+    power: 'power',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -4158,7 +4158,7 @@ export namespace Prisma {
     UserId?: IntFilter<"Characters"> | number
     name?: StringFilter<"Characters"> | string
     health?: StringFilter<"Characters"> | string
-    strength?: StringFilter<"Characters"> | string
+    power?: StringFilter<"Characters"> | string
     createdAt?: DateTimeFilter<"Characters"> | Date | string
     updatedAt?: DateTimeFilter<"Characters"> | Date | string
     user?: XOR<UsersRelationFilter, UsersWhereInput>
@@ -4169,7 +4169,7 @@ export namespace Prisma {
     UserId?: SortOrder
     name?: SortOrder
     health?: SortOrder
-    strength?: SortOrder
+    power?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UsersOrderByWithRelationInput
@@ -4183,7 +4183,7 @@ export namespace Prisma {
     NOT?: CharactersWhereInput | CharactersWhereInput[]
     UserId?: IntFilter<"Characters"> | number
     health?: StringFilter<"Characters"> | string
-    strength?: StringFilter<"Characters"> | string
+    power?: StringFilter<"Characters"> | string
     createdAt?: DateTimeFilter<"Characters"> | Date | string
     updatedAt?: DateTimeFilter<"Characters"> | Date | string
     user?: XOR<UsersRelationFilter, UsersWhereInput>
@@ -4194,7 +4194,7 @@ export namespace Prisma {
     UserId?: SortOrder
     name?: SortOrder
     health?: SortOrder
-    strength?: SortOrder
+    power?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CharactersCountOrderByAggregateInput
@@ -4212,7 +4212,7 @@ export namespace Prisma {
     UserId?: IntWithAggregatesFilter<"Characters"> | number
     name?: StringWithAggregatesFilter<"Characters"> | string
     health?: StringWithAggregatesFilter<"Characters"> | string
-    strength?: StringWithAggregatesFilter<"Characters"> | string
+    power?: StringWithAggregatesFilter<"Characters"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Characters"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Characters"> | Date | string
   }
@@ -4326,7 +4326,7 @@ export namespace Prisma {
   export type CharactersCreateInput = {
     name: string
     health: string
-    strength: string
+    power: string
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UsersCreateNestedOneWithoutCharactersInput
@@ -4337,7 +4337,7 @@ export namespace Prisma {
     UserId: number
     name: string
     health: string
-    strength: string
+    power: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4345,7 +4345,7 @@ export namespace Prisma {
   export type CharactersUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     health?: StringFieldUpdateOperationsInput | string
-    strength?: StringFieldUpdateOperationsInput | string
+    power?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutCharactersNestedInput
@@ -4356,7 +4356,7 @@ export namespace Prisma {
     UserId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     health?: StringFieldUpdateOperationsInput | string
-    strength?: StringFieldUpdateOperationsInput | string
+    power?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4366,7 +4366,7 @@ export namespace Prisma {
     UserId: number
     name: string
     health: string
-    strength: string
+    power: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4374,7 +4374,7 @@ export namespace Prisma {
   export type CharactersUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     health?: StringFieldUpdateOperationsInput | string
-    strength?: StringFieldUpdateOperationsInput | string
+    power?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4384,7 +4384,7 @@ export namespace Prisma {
     UserId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     health?: StringFieldUpdateOperationsInput | string
-    strength?: StringFieldUpdateOperationsInput | string
+    power?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4560,7 +4560,7 @@ export namespace Prisma {
     UserId?: SortOrder
     name?: SortOrder
     health?: SortOrder
-    strength?: SortOrder
+    power?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -4575,7 +4575,7 @@ export namespace Prisma {
     UserId?: SortOrder
     name?: SortOrder
     health?: SortOrder
-    strength?: SortOrder
+    power?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -4585,7 +4585,7 @@ export namespace Prisma {
     UserId?: SortOrder
     name?: SortOrder
     health?: SortOrder
-    strength?: SortOrder
+    power?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -4826,7 +4826,7 @@ export namespace Prisma {
   export type CharactersCreateWithoutUserInput = {
     name: string
     health: string
-    strength: string
+    power: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4835,7 +4835,7 @@ export namespace Prisma {
     charId?: number
     name: string
     health: string
-    strength: string
+    power: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4896,7 +4896,7 @@ export namespace Prisma {
     UserId?: IntFilter<"Characters"> | number
     name?: StringFilter<"Characters"> | string
     health?: StringFilter<"Characters"> | string
-    strength?: StringFilter<"Characters"> | string
+    power?: StringFilter<"Characters"> | string
     createdAt?: DateTimeFilter<"Characters"> | Date | string
     updatedAt?: DateTimeFilter<"Characters"> | Date | string
   }
@@ -5005,7 +5005,7 @@ export namespace Prisma {
     charId?: number
     name: string
     health: string
-    strength: string
+    power: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5013,7 +5013,7 @@ export namespace Prisma {
   export type CharactersUpdateWithoutUserInput = {
     name?: StringFieldUpdateOperationsInput | string
     health?: StringFieldUpdateOperationsInput | string
-    strength?: StringFieldUpdateOperationsInput | string
+    power?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5022,7 +5022,7 @@ export namespace Prisma {
     charId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     health?: StringFieldUpdateOperationsInput | string
-    strength?: StringFieldUpdateOperationsInput | string
+    power?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5031,7 +5031,7 @@ export namespace Prisma {
     charId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     health?: StringFieldUpdateOperationsInput | string
-    strength?: StringFieldUpdateOperationsInput | string
+    power?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

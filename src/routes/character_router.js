@@ -8,15 +8,7 @@ import dotEnv from 'dotenv';
 
 const router = express.Router();
 
-// Token을 검증하고 Payload를 반환합니다.
-function validateToken(token, secretKey) {
-  try {
-    const payload = jwt.verify(token, secretKey);
-    return payload;
-  } catch (error) {
-    return null;
-  }
-}
+// 엑세스 토큰으로 로그인한 사용자의 userId 추출
 function getIdbyAccessToken(req) {
   const accessToken = req.cookies.accessToken;
   const decoded = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET_KEY);
@@ -24,20 +16,10 @@ function getIdbyAccessToken(req) {
 }
 
 // 캐릭터 생성 + 트랜잭션
-router.post('/characters', async (req, res, next) => {
+router.post('/characters', authMiddleware, async (req, res, next) => {
   try {
     // 생성할 캐릭터 이름 입력
     const { name } = req.body;
-
-    // Access 토큰 검증
-    const accessToken = req.cookies.accessToken;
-    if (!accessToken) {
-      return res.send(400).json({ message: "AccessToken 없음. 로그인 하시오" });
-    }
-    const payload = validateToken(accessToken, process.env.ACCESS_TOKEN_SECRET_KEY);
-    if (!payload) {
-      return res.send(400).json({ message: "AccessToken 만료. 다시 로그인 하시오" });
-    }
 
     // 로그인한 사용자의 userId 추출
     const login_id = getIdbyAccessToken(req);
@@ -61,8 +43,8 @@ router.post('/characters', async (req, res, next) => {
         data: {
           UserId: login_id,
           name: name,
-          health: 100,    // 최초 HP:100
-          strength: 10    // 최초 STR:10
+          health: 500,    // 최초 HP:500
+          power:  100     // 최초 STR:100
         },
       });
       return [character];
@@ -76,10 +58,12 @@ router.post('/characters', async (req, res, next) => {
 });
 
 // 로그인-사용자 캐릭터 전체조회
-router.get('/characters', async (req, res, next) => {
+router.get('/characters', authMiddleware, async (req, res, next) => {
+  // 로그인한 사용자의 userId 추출
   const login_id = getIdbyAccessToken(req);
   
-  const users = await prisma.characters.findMany({
+  // 로그인한 사용자의 캐릭터 목록 조회
+  const characters = await prisma.characters.findMany({
     where: { UserId: login_id },
     select: {
       UserId: true,
@@ -91,8 +75,8 @@ router.get('/characters', async (req, res, next) => {
     },
   });
 
-  // 사용자 목록 반환
-  return res.status(200).json({ data: users });
+  // 캐릭터 목록 반환
+  return res.status(200).json({ data: characters });
 });
 
 export default router;

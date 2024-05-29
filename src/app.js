@@ -13,8 +13,10 @@ import UsersRouter from './routes/users_router.js';
 dotEnv.config();
 
 const app = express();
-
 const PORT = 3102;
+
+connect();
+
 const router = express.Router();
 
 app.use(express.json());

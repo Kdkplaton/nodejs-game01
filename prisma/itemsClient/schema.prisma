@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./itemsClient"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DB_ITEM_URL")
+}
+
+model Items {
+  itemId    Int      @id @default(autoincrement()) @map("itemId")
+  name      String   @unique @map("name")
+  stat      String   @map("stat")
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+
+  Item_stat Item_stat? // 아이템(Items) 테이블과 아이템_스텟(Item_stat) 테이블이 1:1 관계
+
+  @@map("Items")
+}
+
+model Item_stat {
+  statId    Int      @id @default(autoincrement()) @map("statId")
+  ItemId    Int      @unique @map("ItemId") // 아이템(Item) 테이블을 참조하는 외래키
+  health    Int?     @map("health") // 체력 보정치
+  attack    Int?     @map("attack") // 공격력 보정치
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+
+  // Item 테이블과 관계를 설정
+  item Items @relation(fields: [ItemId], references: [itemId], onDelete: Cascade)
+
+  @@map("Item_stat")
+}

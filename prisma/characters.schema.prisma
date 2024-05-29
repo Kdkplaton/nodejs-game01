@@ -1,0 +1,49 @@
+
+generator client {
+  provider  = "prisma-client-js"
+  output    = "./charactersClient"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DB_CHARACTER_URL")
+}
+
+model Users {
+  userId    Int      @id @default(autoincrement()) @map("userId")
+  password  String   @map("password")
+  id        String   @unique @map("id")
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+
+  Tokens      Tokens?         // 사용자(Users) 테이블과 토큰(Tokens) 테이블이 1:1 관계
+  Characters  Characters[]    // 사용자(Users) 테이블과 캐릭터(Characters) 테이블이 1:N 관계
+
+  @@map("Users")
+}
+
+model Tokens {
+  tokenId   Int      @id @default(autoincrement()) @map("tokenId")
+  UserId    Int      @unique @map("UserId")
+  token     String   @unique @map("token")
+  createdAt DateTime @default(now()) @map("createdAt")
+
+  user  Users  @relation(fields: [UserId], references: [userId], onDelete: Cascade)
+
+  @@map("Tokens")
+}
+
+model Characters {
+  charId    Int      @id @default(autoincrement()) @map("charId")
+  UserId    Int      @map("UserId")
+  name      String   @unique @map("name")
+  health    String   @map("health")
+  strength  String   @map("strength")
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+
+  // Users 테이블과 관계를 설정
+  user  Users  @relation(fields: [UserId], references: [userId], onDelete: Cascade)
+
+  @@map("Characters")
+}

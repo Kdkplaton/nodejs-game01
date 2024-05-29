@@ -15,18 +15,15 @@ dotEnv.config();
 const app = express();
 const PORT = 3102;
 
-connect();
-
 const router = express.Router();
+router.get("/", (req, res) => {
+  return res.json({ message: "Hello, There! : nodejs_adv" });
+});
 
 app.use(express.json());
 app.use(cookieParser());
 app.use('/api', [CharactersRouter,ItemsRouter,UsersRouter]);
 app.use(errorHandlerMiddleware);
-
-router.get("/", (req, res) => {
-  return res.json({ message: "Hello, There! nodejs_adv" });
-});
 
 app.listen(PORT, () => {
   console.log(PORT, '포트로 서버가 열렸어요!');
